@@ -1,0 +1,13 @@
+int incr(int t[8]);
+{
+  int i;
+  for(i = 0 ; i < sizeof(t); i=i+1){
+    if(t[i] == 0){
+      t[i] = 1;
+      return t;
+    }
+    else if(t[i] == 1){
+      t[i] = 0;
+  }
+    return -1;
+}
