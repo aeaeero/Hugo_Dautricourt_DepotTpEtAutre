@@ -1,0 +1,59 @@
+#include <stdio.h>
+
+
+
+int incr(int t[8])
+{
+  int i;
+  for(i = 0 ; i < 8; i=i+1){
+    if(t[i] == 0){
+      t[i] = 1;
+      return 0;
+    }
+    else if(t[i] == 1){
+      t[i] = 0;
+    }
+  }
+  return -1;
+}
+
+
+int main(void)
+{
+  int idx;
+  int t[8];
+  int temp;
+  int resultat;
+  int res;
+  for(idx = 0 ; idx<256 ; idx ++){
+    temp = idx;
+    for(int cpt = 0 ; cpt < 8; cpt ++){
+      t[cpt] = (temp % 2);
+      temp = (temp/2);
+    }
+    printf("Initiale: ");
+    for(int cpt = 0 ; cpt < 8; cpt ++){
+      printf("%d",t[cpt]);
+    }
+    if(incr(t) == 0){
+      resultat += 1;
+      res = 0;
+    } else {
+      resultat = 0;
+      res = -1;
+    }
+    printf(", Calculée: %d",resultat);
+    for(int cpt = 0 ; cpt < 8; cpt ++){
+      printf("%d",t[cpt]);
+    }
+    printf(" res : (%d), Diagnostic :",res);
+    if(res == 0){
+      printf("Calcul correct");
+    } else {
+      printf("Débordement correctement détecté");
+    }
+    temp = 0;
+    printf("\n");
+    
+  }
+}
